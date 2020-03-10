@@ -10,6 +10,9 @@ const schema = {
   nativeness: {
     type: Number,
   },
+  intelligibility: {
+    type: Number,
+  },
   utteranceID: {
     type: Number,
     required: true,
