@@ -8,6 +8,7 @@ const create = async (body) => new Score({
   similarity: body.similarity,
   naturalness: body.naturalness,
   nativeness: body.nativeness,
+  intelligibility: body.intelligibility,
   utteranceID: body.utteranceID,
 }).save();
 

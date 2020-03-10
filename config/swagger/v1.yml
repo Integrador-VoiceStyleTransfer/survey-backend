@@ -513,6 +513,8 @@ components:
           type: number
         nativeness:
           type: number
+        intelligibility:
+          type: number
         utteranceID:
           type: number
       required:
