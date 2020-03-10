@@ -14,9 +14,12 @@ const create = async (body) => new Speaker({
 
 const remove = async (id) => Speaker.findOneAndRemove({ id });
 
+const removeAll = async () => Speaker.remove({});
+
 module.exports = {
   getAll,
   getById,
   create,
   remove,
+  removeAll,
 };

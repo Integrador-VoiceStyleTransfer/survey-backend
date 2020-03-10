@@ -97,6 +97,23 @@ const remove = async (req, res) => {
   }
 };
 
+const removeAll = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await util.removeAll(id);
+
+    return res
+      .status(httpStatus.OK)
+      .send({ message: 'Removed' });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .send({ message: 'Internal server error' });
+  }
+};
+
 const randomSample = async (req, res) => {
   try {
     const ans = await util.randomSample(5);
@@ -124,5 +141,6 @@ module.exports = {
   create,
   update,
   remove,
+  removeAll,
   randomSample,
 };

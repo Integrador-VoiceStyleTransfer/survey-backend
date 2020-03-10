@@ -14,9 +14,12 @@ const create = async (body) => new Utterance({
 
 const remove = async (id) => Utterance.findOneAndRemove({ id });
 
+const removeAll = async () => Utterance.remove({});
+
 module.exports = {
   getAll,
   getById,
   create,
   remove,
+  removeAll,
 };

@@ -76,10 +76,28 @@ const remove = async (req, res) => {
   }
 };
 
+const removeAll = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await util.removeAll(id);
+
+    return res
+      .status(httpStatus.OK)
+      .send({ message: 'Removed' });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .send({ message: 'Internal server error' });
+  }
+};
+
 
 module.exports = {
   getById,
   getAll,
   create,
   remove,
+  removeAll,
 };

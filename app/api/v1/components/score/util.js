@@ -13,9 +13,13 @@ const create = async (body) => new Score({
 
 const remove = async (id) => Score.findOneAndRemove({ id });
 
+const removeAll = async () => Score.remove({});
+
+
 module.exports = {
   getAll,
   getById,
   create,
   remove,
+  removeAll,
 };

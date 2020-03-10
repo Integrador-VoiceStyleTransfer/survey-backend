@@ -11,9 +11,12 @@ const create = async (body) => new Model({
 
 const remove = async (id) => Model.findOneAndRemove({ id });
 
+const removeAll = async () => Model.remove({});
+
 module.exports = {
   getAll,
   getById,
   create,
   remove,
+  removeAll,
 };
