@@ -1,6 +1,7 @@
 const Utterance = require('../../components/utterance/model');
+const Model = require('../../components/model/model');
 
-const randomSamples = async (n) => Utterance.aggregate().sample(n)
+const getSamplesByModel = async (modelID, n) => Utterance.aggregate().match({ modelID }).sample(n)
   .lookup({
     from: 'audios', localField: 'contentID', foreignField: 'id', as: 'content',
   })
@@ -18,6 +19,28 @@ const randomSamples = async (n) => Utterance.aggregate().sample(n)
     style: 1,
     output: 1,
   });
+
+const randomSamples = async (n) => {
+  const models = await Model.find({});
+  const nModels = models.length;
+  const nSamples = Math.floor(n / nModels);
+  let list = [];
+  console.log(n);
+  console.log(nModels);
+  
+  console.log(nSamples);
+  
+  
+  // console.log(models);
+
+  await models.forEach(async (model) => {
+    const utterances = await getSamplesByModel(model.id, nSamples);
+    console.log(utterances);
+    // list = list.concat(utterances);
+  });
+
+  console.log(list);
+}
 
 module.exports = {
   randomSamples,

@@ -5,7 +5,7 @@ const randomSamples = async (req, res) => {
   try {
     let { n } = req.query;
 
-    n = n ? parseInt(n, 10) : 20;
+    n = n ? parseInt(n, 10) : 18;
 
     const ans = await util.randomSamples(n);
 
