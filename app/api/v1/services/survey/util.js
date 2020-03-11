@@ -25,22 +25,14 @@ const randomSamples = async (n) => {
   const nModels = models.length;
   const nSamples = Math.floor(n / nModels);
   let list = [];
-  console.log(n);
-  console.log(nModels);
-  
-  console.log(nSamples);
-  
-  
-  // console.log(models);
 
-  await models.forEach(async (model) => {
+  for (const model of models) {
     const utterances = await getSamplesByModel(model.id, nSamples);
-    console.log(utterances);
-    // list = list.concat(utterances);
-  });
-
-  console.log(list);
-}
+    list = list.concat(utterances);
+    console.log(list);
+  }
+  return list;
+};
 
 module.exports = {
   randomSamples,
