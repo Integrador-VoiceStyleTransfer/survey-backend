@@ -365,6 +365,14 @@ paths:
           description: OK.
         '500':
           description: Internal server error.
+    delete:
+      tags:
+        - Score
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error. 
     
   /score/{id}:
     get:
