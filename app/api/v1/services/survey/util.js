@@ -1,3 +1,4 @@
+const Score = require('../../components/score/model');
 const Utterance = require('../../components/utterance/model');
 const Model = require('../../components/model/model');
 
@@ -34,6 +35,31 @@ const randomSamples = async (n) => {
   return list;
 };
 
+const statsByModel = async () => {
+  let res = await Score
+    .aggregate()
+    .lookup({ from: 'utterances', localField: 'utteranceID', foreignField: 'id', as: 'utterance' })
+    .unwind('utterance')
+    .lookup({ from: 'models', localField: 'utterance.modelID', foreignField: 'id', as: 'model'})
+    .unwind('model')
+    .lookup({ from: 'audios', localField: 'utterance.contentID', foreignField: 'id', as: 'content'})
+    .lookup({ from: 'audios', localField: 'utterance.styleID', foreignField: 'id', as: 'style'})
+    .lookup({ from: 'audios', localField: 'utterance.outputID', foreignField: 'id', as: 'output'})
+    .unwind('content')
+    .unwind('style')
+    .unwind('output')
+    .lookup({ from: 'speakers', localField: 'content.speakerID', foreignField: 'id', as: 'contentSpeaker'})
+    .lookup({ from: 'speakers', localField: 'style.speakerID', foreignField: 'id', as: 'styleSpeaker'})
+    .lookup({ from: 'speakers', localField: 'output.speakerID', foreignField: 'id', as: 'outputSpeaker'})
+    .unwind('contentSpeaker')
+    .unwind('styleSpeaker')
+    .unwind('outputSpeaker');
+
+  return res;
+};
+
+
 module.exports = {
   randomSamples,
+  statsByModel,
 };
