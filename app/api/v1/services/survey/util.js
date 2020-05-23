@@ -35,6 +35,8 @@ const randomSamples = async (n) => {
   return list;
 };
 
+const tl = async () => getSamplesByModel(4, 6);
+
 const statsByModel = async () => {
   let res = await Score
     .aggregate()
@@ -62,4 +64,5 @@ const statsByModel = async () => {
 module.exports = {
   randomSamples,
   statsByModel,
+  tl,
 };

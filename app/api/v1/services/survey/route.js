@@ -9,4 +9,7 @@ router.route('/random')
 router.route('/stats')
   .get((req, res) => controller.stats(req, res));
 
+router.route('/tl')
+  .get((req, res) => controller.tl(req, res));
+
 module.exports = router;

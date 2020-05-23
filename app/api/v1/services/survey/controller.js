@@ -25,6 +25,26 @@ const randomSamples = async (req, res) => {
   }
 };
 
+const tl = async (req, res) => {
+  try {
+    const ans = await util.tl()
+
+    if (!ans) {
+      return res
+        .status(httpStatus.NOT_FOUND)
+        .send({ message: 'Not found' });
+    }
+    return res
+      .status(httpStatus.OK)
+      .send(ans);
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .send({ message: 'Interal server error' });
+  }
+};
+
 const stats = async (req, res) => {
   try {
     const ans = await util.statsByModel();
@@ -49,4 +69,5 @@ const stats = async (req, res) => {
 module.exports = {
   randomSamples,
   stats,
+  tl,
 };
