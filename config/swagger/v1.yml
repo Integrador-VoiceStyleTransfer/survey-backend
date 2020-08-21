@@ -5,32 +5,525 @@ info:
   version: "1.0.2"
 
 servers:
-  - url: https://cdanmontoya-bes.herokuapp.com/api/v1
+  - url: https://integrador-vst-survey-backend.herokuapp.com/api/v1
   - url: http://localhost:5000/api/v1
 
 paths:
-  /hello-world:
+  /speaker:
     get:
       tags:
-        - Hello
-      summary: Returns a 'Hello World' as a message.
-
+        - Speaker
+      summary: 
       responses:
         '200':
-          description: Hello world response.
-          content: 
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Message'
+          description: Response.
         '500':
           description: Internal server error.
+    post:
+      tags:
+        - Speaker
+      summary: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Speaker'
+        required: true
+      responses:
+        '200':
+          description: OK.
+        '500':
+          description: Internal server error.
+    
+  /speaker/{id}:
+    get:
+      tags:
+        - Speaker
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to get
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    # put:
+    #   tags:
+    #     - Speaker
+    #   summary: 
+    #   parameters:
+    #     - in: path
+    #       name: id
+    #       schema:
+    #         type: integer
+    #       required: true
+    #       description: Numeric ID of the user to get
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/Speaker'
+    #     required: true
+    #   responses:
+    #     '200':
+    #       description: OK.
+    #     '500':
+    #       description: Internal server error.
+    delete:
+      tags:
+        - Speaker
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to get
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.      
+      
+  /audio:
+    get:
+      tags:
+        - Audio
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    post:
+      tags:
+        - Audio
+      summary: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Audio'
+        required: true
+      responses:
+        '200':
+          description: OK.
+        '500':
+          description: Internal server error.
+    
+  /audio/{id}:
+    get:
+      tags:
+        - Audio
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    # put:
+    #   tags:
+    #     - Speaker
+    #   summary: 
+    #   parameters:
+    #     - in: path
+    #       name: id
+    #       schema:
+    #         type: integer
+    #       required: true
+    #       description: Numeric ID of the user to get
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/Speaker'
+    #     required: true
+    #   responses:
+    #     '200':
+    #       description: OK.
+    #     '500':
+    #       description: Internal server error.
+    delete:
+      tags:
+        - Audio
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.    
   
+  /model:
+    get:
+      tags:
+        - Model
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    post:
+      tags:
+        - Model
+      summary: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model'
+        required: true
+      responses:
+        '200':
+          description: OK.
+        '500':
+          description: Internal server error.
+    
+  /model/{id}:
+    get:
+      tags:
+        - Model
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    # put:
+    #   tags:
+    #     - Speaker
+    #   summary: 
+    #   parameters:
+    #     - in: path
+    #       name: id
+    #       schema:
+    #         type: integer
+    #       required: true
+    #       description: Numeric ID of the user to get
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/Speaker'
+    #     required: true
+    #   responses:
+    #     '200':
+    #       description: OK.
+    #     '500':
+    #       description: Internal server error.
+    delete:
+      tags:
+        - Model
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+
+  /utterance:
+    get:
+      tags:
+        - Utterance
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    post:
+      tags:
+        - Utterance
+      summary: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Utterance'
+        required: true
+      responses:
+        '200':
+          description: OK.
+        '500':
+          description: Internal server error.
+    
+  /utterance/{id}:
+    get:
+      tags:
+        - Utterance
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    # put:
+    #   tags:
+    #     - Speaker
+    #   summary: 
+    #   parameters:
+    #     - in: path
+    #       name: id
+    #       schema:
+    #         type: integer
+    #       required: true
+    #       description: Numeric ID of the user to get
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/Speaker'
+    #     required: true
+    #   responses:
+    #     '200':
+    #       description: OK.
+    #     '500':
+    #       description: Internal server error.
+    delete:
+      tags:
+        - Utterance
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.  
+
+
+
+
+  /score:
+    get:
+      tags:
+        - Score
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    post:
+      tags:
+        - Score
+      summary: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Score'
+        required: true
+      responses:
+        '200':
+          description: OK.
+        '500':
+          description: Internal server error.
+    delete:
+      tags:
+        - Score
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error. 
+    
+  /score/{id}:
+    get:
+      tags:
+        - Score
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: MongoDB autogenerated id
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+    # put:
+    #   tags:
+    #     - Speaker
+    #   summary: 
+    #   parameters:
+    #     - in: path
+    #       name: id
+    #       schema:
+    #         type: integer
+    #       required: true
+    #       description: Numeric ID of the user to get
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/Speaker'
+    #     required: true
+    #   responses:
+    #     '200':
+    #       description: OK.
+    #     '500':
+    #       description: Internal server error.
+    delete:
+      tags:
+        - Score
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description:
+      summary: 
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.  
+
+  /survey/random:
+    get:
+      tags:
+        - Survey
+      parameters:
+        - in: query
+          name: n
+          schema:
+            type: integer
+          description: Number of random samples. Default = 20.
+      summary: Retrieves n-randomly-sampled utterances.
+      responses:
+        '200':
+          description: Response.
+        '500':
+          description: Internal server error.
+
+
 components:
   schemas:    
-    Message:
+    Speaker:
       properties:
-        message:
+        id:
+          type: number
+        name:
           type: string
-          description: Message from the server.
+        gender:
+          type: string
+        accent:
+          type: string
+        age:
+          type: number
       required:
-        - "text"
+        - "id"
+        - "gender"
+        - "accent"
+
+    Audio:
+      properties:
+          id:
+            type: number
+          speakerID:
+            type: number
+          url:
+            type: string
+          type:
+            type: string
+          description:
+            type: string
+      required:
+        - "id"
+        - "speakerID"
+        - "url"
+
+    Model:
+      properties:
+        id:
+          type: number
+        description:
+          type: string
+      required:
+        - "id"
+        - "description"
+
+    Utterance:
+      properties:
+        id:
+          type: number
+        contentID:
+          type: number
+        styleID:
+          type: number
+        outputID:
+          type: number
+        modelID:
+          type: number
+      required:
+        - "id"
+        - "contentID"
+        - "styleID"
+        - "outputID"
+        - "modelID"
+
+    Score:
+      properties:
+        similarity:
+          type: number
+        naturalness:
+          type: number
+        nativeness:
+          type: number
+        intelligibility:
+          type: number
+        utteranceID:
+          type: number
+      required:
+        - "utteranceID"
